@@ -105,3 +105,27 @@ log_DONE(msg) =  printstyled(">> DONE  $msg" ; color = :green)
 log_info(msg) =  printstyled(">> INFO  $msg" ; color = :cyan)
 log_debug(msg) = printstyled(">> DEBUG $msg" ; color = :blue)
 ----
+
+== Null or missing values
+
+[cols="<.<,<.<,<.<,<.<,<.<,<.<,<.<", options="header"]
+|=== 
+| C/C++ | C# | JavaScript | Julia^(1)^ | PowerShell^(2)^ | Python | Rust
+
+| `a == NULL` +
+  `a == nullptr`
+| `a == null`
+| `a === null` +
+  `a === undefined` +
+  `a == null` (null or undefined)
+| `a === nothing` +
+  `isnothing(a)` +
+  `ismissing(a)`
+| `$null -eq $a`
+| `a is None`
+| (rust todo)
+|===
+
+(1) Julia: `nothing` generates errors in expressions, `missing` propagates silently 
+
+(2) PowerShell: "You may have noticed that I always place the $null on the left when checking for $null in my examples. This is intentional and accepted as a PowerShell best practice. There are some scenarios where placing it on the right doesn't give you the expected result." -- https://docs.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-null
