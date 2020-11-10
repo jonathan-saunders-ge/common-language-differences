@@ -1,0 +1,84 @@
+= Common Language Differences
+:toc:
+
+Common Language Differences (Julia, PowerShell, Python, JavaScript, et al) This isn't intended to cover all languages, just the ones I'm currently using.
+
+:numbered:
+
+== String Interpolation
+
+[%header]
+|===
+| language   | syntax                                                | notes
+
+| C++        | nope (but see std::format)                            |
+| C#	     | `$"Hello, {name} ({name.Length} letters)"`            | (braces)
+| JavaScript | `\`Hello, ${name} (${name.length} letters)\``         | (braces)
+| Julia	     | `"Hello, $name ($(length(name)) letters)"`            | (parens)
+| PowerShell | `"Hello, $name or ${name} ($($name.Length) letters)"` | (parens)
+| Python(1)  | `f"Hello, {name} ({len(name)} letters)"`              | (braces)
+| Rust       |                                                     	 |
+|===
+
+(1) Python works in single or double quotes
+
+== Collections
+
+https://docs.julialang.org/en/v1/base/collections/#Dictionaries
+https://en.wikibooks.org/wiki/Introducing_Julia/Dictionaries_and_sets
+
+.julia
+[source,julia]
+----
+my_dict = Dict{String,Int64}()
+my_dict = Dict("a"=>1,"b"=2) # or iterable returning tuple
+my_dict["a"] ; my_dict["c"] = 3 # or get(collection, key, default)
+my_dict["d"] # throws
+hasdict(my_dict, "d")
+for (key, value) in my_dict
+    @show key, value
+end
+
+my_tuple = (1,2,3)
+my_array [1,2,3] # aka vector  
+
+julia> [[1,2,3] , [4,5,6]] # array of arrays  
+2-element Array{Array{Int64,1},1}:
+[1, 2, 3]
+[4, 5, 6]
+
+julia> [[1,2,3] [4,5,6]] # 2d array 
+3×2 Array{Int64,2}:
+1 4
+2 5
+3 6
+
+julia> [[1 2 3] ; [4 5 6]] # 2d array  
+2×3 Array{Int64,2}:
+1 2 3
+4 5 6
+----
+
+== Logging
+
+.powershell
+[source,powershell]
+----
+function log_error($msg) { Write-Host  -ForegroundColor Red    ">> ERROR $msg" }
+function log_warn($msg) { Write-Host   -ForegroundColor Yellow ">> WARN  $msg" }
+function log_OK($msg) { Write-Host     -ForegroundColor Green  ">> OK    $msg" }
+function log_DONE($msg) { Write-Host   -ForegroundColor Green  ">> DONE  $msg" }
+function log_info($msg) { Write-Host   -ForegroundColor Cyan   ">> INFO  $msg" }
+function log_debug($msg) { Write-Host  -ForegroundColor Blue   ">> DEBUG $msg" }
+----
+
+.julia
+[source,julia]
+----
+log_error(msg) = printstyled(">> ERROR $msg" ; color = :red)
+log_warn(msg) =  printstyled(">> WARN  $msg" ; color = :yellow)
+log_OK(msg) =    printstyled(">> OK    $msg" ; color = :green)
+log_DONE(msg) =  printstyled(">> DONE  $msg" ; color = :green)
+log_info(msg) =  printstyled(">> INFO  $msg" ; color = :cyan)
+log_debug(msg) = printstyled(">> DEBUG $msg" ; color = :blue)
+----
