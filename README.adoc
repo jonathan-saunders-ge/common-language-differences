@@ -3,6 +3,8 @@
 
 Common Language Differences (Julia, PowerShell, Python, JavaScript, et al) This isn't intended to cover all languages, just the ones I'm currently using.
 
+This is a github repo instead of a github gist because when editing from the browser you can't do a preview of a gist, but you can of a repo readme.
+
 :numbered:
 
 == String Interpolation
@@ -21,6 +23,27 @@ Common Language Differences (Julia, PowerShell, Python, JavaScript, et al) This 
 |===
 
 (1) Python works in single or double quotes
+
+== String functions
+
+[%header]
+|===
+|Language |Length |Substring |Contains 
+
+|C#
+|`s.Length`
+|`s.Substring(1, len)` +
+`s.Substring(start)`
+|`s.Contains("abc")`
+
+|PowerShell
+|`s.Length`
+|`s.Substring(1, len)` +
+`s.Substring(start)`
+|`s -clike '*abc*"` +
+`s -ilike "*abc*"` # or -like
+|===
+
 
 == Collections
 
