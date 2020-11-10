@@ -30,11 +30,22 @@ This is a github repo instead of a github gist because when editing from the bro
 |===
 |Language |Length |Substring |Contains 
 
+|C/C++
+|`strlen(s)` +
+`s.size()` (or `s.length()`)
+| C: nope +
+`s.substr(start, len)` +
+`s.substr(start)` # to end
+| `s.find("abc") != std::string::npos` +
+starts/ends with^(1)^
+
 |C#
 |`s.Length`
-|`s.Substring(1, len)` +
-`s.Substring(start)`
+|`s.Substring(start, len)` +
+`s.Substring(start)` # to end
 |`s.Contains("abc")`
+`s.StartsWith("abc")` +
+`s.EndsWith("abc")`
 
 |PowerShell
 |`s.Length`
@@ -44,6 +55,19 @@ This is a github repo instead of a github gist because when editing from the bro
 `s -ilike "*abc*"` # or -like
 |===
 
+.(1) C++
+[source,c++]
+----
+static bool endsWith(const std::string& str, const std::string& suffix)
+{
+    return str.size() >= suffix.size() && 0 == str.compare(str.size()-suffix.size(), suffix.size(), suffix);
+}
+
+static bool startsWith(const std::string& str, const std::string& prefix)
+{
+    return str.size() >= prefix.size() && 0 == str.compare(0, prefix.size(), prefix);
+}
+----
 
 == Collections
 
