@@ -43,7 +43,7 @@ starts/ends with^(1)^
 |`s.Length`
 |`s.Substring(start, len)` +
 `s.Substring(start)` # to end
-|`s.Contains("abc")`
+|`s.Contains("abc")` +
 `s.StartsWith("abc")` +
 `s.EndsWith("abc")`
 
