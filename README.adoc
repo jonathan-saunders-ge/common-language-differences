@@ -37,7 +37,8 @@ This is a github repo instead of a github gist because when editing from the bro
 `s.substr(start, len)` +
 `s.substr(start)` # to end
 | `s.find("abc") != std::string::npos` +
-starts/ends with^(1)^
+boost::algorithm::starts_with(s, "abc")^(1)^ +
+boost::algorithm::ends_with(s, "abc")^(1)^
 
 |C#
 |`s.Length`
@@ -55,14 +56,13 @@ starts/ends with^(1)^
 `s -ilike "*abc*"` # or -like
 |===
 
-.(1) C++
+(1) C++ (from https://stackoverflow.com/a/42844629)
 [source,c++]
 ----
 static bool endsWith(const std::string& str, const std::string& suffix)
 {
     return str.size() >= suffix.size() && 0 == str.compare(str.size()-suffix.size(), suffix.size(), suffix);
 }
-
 static bool startsWith(const std::string& str, const std::string& prefix)
 {
     return str.size() >= prefix.size() && 0 == str.compare(0, prefix.size(), prefix);
