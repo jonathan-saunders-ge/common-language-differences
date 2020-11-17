@@ -1,0 +1,17 @@
+
+[%header]
+|===
+|Language |Read Whole File
+
+|C/C++
+|`std::ifstream ifs("myfile.txt");` +
+`std::stringstream sstr;` +
+`sstr << ifs.rdbuf();`
+
+|C#
+|`string str = https://docs.microsoft.com/en-us/dotnet/api/system.io.file.readalltext[System.IO.File.ReadAllText]("myfile.txt")`
+
+|PowerShell
+|$str = [IO.File]::ReadAllText("myfile.txt")
+
+|===
