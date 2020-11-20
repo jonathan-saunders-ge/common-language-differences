@@ -106,6 +106,18 @@ julia> [[1 2 3] ; [4 5 6]] # 2d array
 4 5 6
 ----
 
+== List Comprensions
+
+[%header]
+|===
+|Julia |Python
+
+|`osquares = [x * x for x in 1:10 if x % 2 == 1]`
+|`osquares = [x * x for x in range(10) if x % 2 == 1]`
+
+|===
+
+
 == Logging
 
 .powershell
