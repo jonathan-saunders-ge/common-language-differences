@@ -106,6 +106,32 @@ julia> [[1 2 3] ; [4 5 6]] # 2d array
 4 5 6
 ----
 
+== Exceptions
+
+[cols="h,a"]
+|===
+|C++ |todo
+|C# |todo
+|JavaScript |todo
+
+|Julia |[source,julia]
+----
+try
+  throw(DomainError(x, "argument must be nonnegative"))
+  error("something bad happened") # throws ErrorException
+catch ex
+  ...
+end
+----
+See https://docs.julialang.org/en/v1/manual/control-flow/#Built-in-Exceptions[Built-in-Exceptions] for more exception types. 
+
+|Powershell |todo
+|Python |todo
+|Rust |todo
+
+|===
+
+
 == List Comprensions
 
 [%header]
