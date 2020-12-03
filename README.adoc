@@ -11,15 +11,15 @@ This is a github repo instead of a github gist because when editing from the bro
 
 [%header]
 |===
-| language   | syntax                                                | notes
+| language   | syntax                                                    | notes
 
-| C++        | nope (but see std::format)                            |
-| C#	     | `$"Hello, {name} ({name.Length} letters)"`            | (braces)
-| JavaScript | `\`Hello, ${name} (${name.length} letters)\``         | (braces)
-| Julia	     | `"Hello, $name ($(length(name)) letters)"`            | (parens)
-| PowerShell | `"Hello, $name or ${name} ($($name.Length) letters)"` | (parens)
-| Python(1)  | `f"Hello, {name} ({len(name)} letters)"`              | (braces)
-| Rust       |                                                     	 |
+| C++        | nope (but see std::format)                                |
+| C#	     | `++$"Hello, {name} ({name.Length} letters)"++`            | (braces)
+| JavaScript | `++`Hello, ${name} (${name.length} letters)`++`           | (braces)
+| Julia	     | `++"Hello, $name ($(length(name)) letters)"++`            | (parens)
+| PowerShell | `++"Hello, $name or ${name} ($($name.Length) letters)"++` | (parens)
+| Python(1)  | `++f"Hello, {name} ({len(name)} letters)"++`              | (braces)
+| Rust       |                                                           |
 |===
 
 (1) Python works in single or double quotes
@@ -106,6 +106,76 @@ julia> [[1 2 3] ; [4 5 6]] # 2d array
 4 5 6
 ----
 
+
+== Destructuring Assignment / Returning Multiple Values
+
+[cols="h,a,a"]
+|===
+|Language|Example|Return one value
+
+|C++
+|nope
+|[source,c++]
+----
+return 17;
+----
+
+|C#
+|[source,c#]
+----
+var my_tuple = (abc: "foo", def: "bar", ghi: "baz");
+var (one, two, _) = my_tuple;
+Console.WriteLine($"one: {one}, two: {two}");
+----
+|[source,c#]
+----
+return 17; // done
+----
+
+|JavaScript
+|todo
+|[source,javascript]
+----
+return 17;
+----
+
+|Julia
+|[source,julia]
+----
+foo(a, b) = a+b, a*b
+x, y = foo(2, 3)
+----
+|[source,julia]
+----
+17 # (returns the value of the last expression evaluated)
+return 17
+----
+
+|PowerShell
+|todo
+|[source,powershell]
+----
+17 # (warning: returns all output values that are not captured, not just the last one)
+return 17 # (warning returns: all output values that are not captured, not just the last one)
+----
+
+|Python
+|todo
+|[source,python]
+----
+return 17
+----
+
+|Rust
+|todo
+|[source,rust]
+----
+17 // (but watch out for "17;" or was that just with some macro?)
+----
+
+|===
+
+
 == Exceptions
 
 [cols="h,a"]
@@ -132,7 +202,7 @@ See https://docs.julialang.org/en/v1/manual/control-flow/#Built-in-Exceptions[Bu
 |===
 
 
-== List Comprensions
+== List Comprehensions
 
 [%header]
 |===
