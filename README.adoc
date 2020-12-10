@@ -152,12 +152,17 @@ return 17
 ----
 
 |PowerShell
-|todo
 |[source,powershell]
 ----
-17 # (warning: returns all output values that are not captured, not just the last one)
-return 17 # (warning returns: all output values that are not captured, not just the last one)
+function jnf($a,$b) { return $a,$b }
+$jn1,$jn2 = jnf 12 34
 ----
+|[source,powershell]
+----
+17 
+return 17
+----
+(warning: returns all output values that are not captured, not just the last one)
 
 |Python
 |todo
