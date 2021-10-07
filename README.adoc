@@ -181,6 +181,46 @@ return 17
 |===
 
 
+== Reading files
+
+[cols="h,a"]
+|===
+|C++ |todo
+|C# |todo
+|JavaScript |todo
+
+|Julia |[source,julia]
+----
+# Julia is UTF-8 with no BOM by default.
+# TODO (1) other encodings, (2) UTF-8 with BOM, (3) line endings.
+
+# this will close the file if exceptions happen in the do block
+open("file.txt") do file
+    for line in eachline(file)
+        println(line)
+    end
+end
+
+# or this (also shows `keep` parameter, useful for maintaining LF vs CRLF line endings)
+for line in eachline("file.txt"; keep=true)
+    print(line)
+end
+
+# with line numbers
+open("file.txt") do f
+    for tpl in enumerate(eachline(f))
+      println("$(tpl[1]): $(tpl[2])")
+    end
+end
+----
+
+|Powershell |todo
+|Python |todo
+|Rust |todo
+
+|===
+
+
 == Exceptions
 
 [cols="h,a"]
