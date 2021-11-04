@@ -14,11 +14,11 @@ This is a github repo instead of a github gist because when editing from the bro
 | language   | syntax                                                    | notes
 
 | C++        | nope (but see std::format)                                |
-| C#	     | `++$"Hello, {name} ({name.Length} letters)"++`            | (braces)
-| JavaScript | `++`Hello, ${name} (${name.length} letters)`++`           | (braces)
-| Julia	     | `++"Hello, $name ($(length(name)) letters)"++`            | (parens)
-| PowerShell | `++"Hello, $name or ${name} ($($name.Length) letters)"++` | (parens)
-| Python(1)  | `++f"Hello, {name} ({len(name)} letters)"++`              | (braces)
+| C#	     | `++$"Hello, {name} ({name.Length} letters)"++`            | $"" {braces}
+| JavaScript | `++`Hello, ${name} (${name.length} letters)`++`           | `` ${braces}
+| Julia	     | `++"Hello, $name ($(length(name)) letters)"++`            | "" $(parens)
+| PowerShell | `++"Hello, $name or ${name} ($($name.Length) letters)"++` | "" $(parens)
+| Python(1)  | `++f"Hello, {name} ({len(name)} letters)"++`              | f"" {braces}
 | Rust       |                                                           |
 |===
 
