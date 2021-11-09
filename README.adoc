@@ -48,6 +48,13 @@ boost::algorithm::ends_with(s, "abc")^(1)^
 `s.StartsWith("abc")` +
 `s.EndsWith("abc")`
 
+|Julia
+|`length(s)`
+|`s[1:len]` +
+`s[1:end-1] # chop last character`
+|`occursin("abc", s)` +
+`startswith(s, "abc")` # or endswith
+
 |PowerShell
 |`s.Length`
 |`s.Substring(1, len)` +
